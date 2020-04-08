@@ -1,0 +1,78 @@
+package br.com.locacao.interfaces;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+public class PainelUsuarios extends JFrame{
+	private JLabel usuariotxt;
+	private JLabel listartxt;
+	private JTextField tflistar;
+	private JButton btlistar;
+	private JTextField line;
+	private JButton cadastrar;
+	public PainelUsuarios(){
+		setSize(700,500);
+		inicializarComponentes();
+		setLocationRelativeTo(null);
+		setLayout(null);
+		setVisible(true);
+		
+	}
+	
+	public void inicializarComponentes(){
+		usuariotxt = new JLabel("Usuário");
+		usuariotxt.setFont(new Font("Arial", 15, 30));
+		usuariotxt.setForeground(new Color(16,78,139)); 
+		
+		
+		listartxt = new JLabel("Listar :");
+		tflistar = new JTextField();
+		cadastrar = new JButton("CADASTRAR");
+		
+		
+		listartxt.setFont(new Font("Arial", 4, 20));
+		listartxt.setForeground(new Color(16,78,139)); 
+		
+		cadastrar.setFont(new Font("Arial", 5, 16));
+		cadastrar.setForeground(new Color(70, 130, 180));
+		cadastrar.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(211,211,211), 1));
+		cadastrar.setRequestFocusEnabled(false);
+		cadastrar.setRolloverEnabled(false);
+		cadastrar.setMargin(new Insets(2, 100, 2, 14));
+		
+		btlistar = new JButton("OK");
+		btlistar.setFont(new Font("Arial", 5, 16));
+		btlistar.setForeground(new Color(70, 130, 180));
+		btlistar.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(211,211,211), 1));
+		btlistar.setRequestFocusEnabled(false);
+		btlistar.setRolloverEnabled(false);
+		btlistar.setMargin(new Insets(2, 100, 2, 14));
+		
+		line = new JTextField ();
+		line.setBorder(new LineBorder(new Color(70,130,180)));
+		
+		usuariotxt.setBounds(280, -75, 300, 215);
+		line.setBounds(160,55,340, 1);
+		listartxt.setBounds(30,100,250,30);
+		tflistar.setBounds(100, 100, 250, 30);
+		btlistar.setBounds(360,100,80,30);
+		cadastrar.setBounds(500,100,115,30);
+		
+		
+		add(usuariotxt);
+		add(line);
+		add(listartxt);
+		add(tflistar);
+		add(btlistar);
+		add(cadastrar);
+		
+	}
+}

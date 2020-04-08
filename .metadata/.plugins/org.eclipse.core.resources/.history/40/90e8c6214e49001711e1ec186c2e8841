@@ -1,0 +1,26 @@
+package br.com.locacao.interfaces;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class PainelUsuarios extends JPanel{
+	private JLabel usuariotxt;
+	private JLabel listartxt;
+	private JTextField tflistar;
+	private JButton btlistar;
+	private JTextField line;
+	
+	public PainelUsuarios(){
+		setSize(700,500);
+		inicializarComponentes();
+		setLayout(null);
+		
+	}
+	
+	public void inicializarComponentes(){
+		usuariotxt = new JLabel("Usuario");
+		
+	}
+}

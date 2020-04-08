@@ -1,0 +1,16 @@
+package br.com.locacao.interfaces;
+
+import javax.swing.JPanel;
+
+public class Painel extends JPanel {
+		Login lg = new Login();
+		Cadastro cd = new Cadastro();
+		
+		public Painel(){
+			
+		}
+	
+	
+	
+	
+}

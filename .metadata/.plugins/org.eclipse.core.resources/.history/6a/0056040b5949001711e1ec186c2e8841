@@ -1,0 +1,197 @@
+package br.com.locacao.interfaces;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import br.com.locacao.dao.UsuarioDAO;
+import br.com.locacao.modeloUsuario.Usuario;
+
+public class Login extends JFrame {
+	
+	private JButton logar;
+	private JButton voltar;
+	private JButton voltar2;
+	private JTextField usuarios2;
+	private JPasswordField senha;
+	Painel p = new Painel();
+	PainelCadastro p2 = new PainelCadastro();
+	PainelAreaDeTrabalho p3 = new PainelAreaDeTrabalho();
+	PainelAreaDeTrabalhoUser p4 = new PainelAreaDeTrabalhoUser();
+	
+	
+	public Login() {
+		setSize(700,500);
+		setTitle("Safety - Locação de Equipamentos");
+		setLayout(null);
+		inicializarComponentes();
+		setResizable(false);
+		setLocationRelativeTo(null);
+		eventos();
+		setVisible(true);
+		
+	}
+
+	private void inicializarComponentes() {
+		// TODO Auto-generated method stub
+		usuarios2 = new JTextField();
+		senha = new JPasswordField();
+		logar = new JButton("LOGIN");
+		//cadastrar = new JButton("LIMPAR");
+		voltar = new JButton("Voltar");
+		voltar2 = new JButton("Voltar");
+		
+		
+		usuarios2 = new JTextField ();
+		senha = new JPasswordField ();
+		
+		voltar.setVisible(false);
+		voltar2.setVisible(false);
+		p2.setVisible(false);
+		p3.setVisible(false);
+		p4.setVisible(false);
+		
+		logar.setFont(new Font("Arial", 5, 16));
+	    logar.setForeground(new Color(70, 130, 180));
+	    logar.setText(" ENTRAR ");
+	    logar.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(211,211,211), 1));
+	    logar.setRequestFocusEnabled(false);
+	    logar.setRolloverEnabled(false);
+	    logar.setMargin(new Insets(2, 100, 2, 14));
+	    
+	   
+	    senha.setMargin(new Insets(2, 5, 2, 14));
+	    usuarios2.setMargin(new Insets(2, 5, 2, 14));
+	    p.setBounds(0, 0, 700, 500);
+	    p2.setBounds(0,0,700, 500);
+	    p3.setBounds(0,0,700,500);
+	    p4.setBounds(0,0,700,500);
+	    voltar.setBounds(10,20,130,30);
+	    voltar2.setBounds(1,1,130,30);
+	   
+		logar.setBounds(300,300, 280, 40);
+		usuarios2.setBounds(300, 140, 280, 30);
+		senha.setBounds(300,230, 280, 30);
+			
+			
+			add(logar);
+			add(voltar);
+			add(voltar2);
+			add(p);
+			add(p2);
+			add(p3);
+			add(p4);
+			add(usuarios2);
+			add(senha);
+			
+			
+	}
+
+
+
+	public void eventos(){
+		
+		
+		logar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				List<Usuario> usuarios = null;
+				try {
+					usuarios = UsuarioDAO.getUsuario();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
+				
+					for(Usuario user : usuarios){
+						if(usuarios2.getText().equals(user.getLogin()) && String.valueOf(senha.getPassword()).equals(user.getSenha())){
+							System.out.println("Usuario:" + user.getAdmin());
+								if(user.getAdmin() == 's'){
+								p3.setVisible(true);
+								p.setVisible(false);
+								//cadastrar.setVisible(false);
+								logar.setVisible(false);
+								usuarios2.setVisible(false);
+								senha.setVisible(false);
+							}else{
+								p4.setVisible(true);
+								p.setVisible(false);
+								//cadastrar.setVisible(false);
+								logar.setVisible(false);
+								usuarios2.setVisible(false);
+								senha.setVisible(false);
+							}
+						}
+					}
+			}
+		});
+		
+		
+		voltar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(p4.isVisible()){
+					p4.setVisible(false);
+					p.setVisible(true);
+					//cadastrar.setVisible(true);
+					usuarios2.setVisible(true);
+					senha.setVisible(true);
+					logar.setVisible(true);
+					voltar.setVisible(false);
+				}
+				
+			}
+		});
+		
+		voltar2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(p4.isVisible()){
+					p4.setVisible(false);
+					p.setVisible(true);
+					//cadastrar.setVisible(true);
+					logar.setVisible(true);
+					voltar2.setVisible(false);
+				}
+				
+			}
+		});
+	
+	}
+	
+	
+	
+	public boolean acao(){
+		if(pnl.isVisible()){
+			
+		}
+		
+		return true;
+	}
+	
+	public static void main(String[] args){
+		   new Login();
+		   
+		   
+	}
+	
+		
+	
+}

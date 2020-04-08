@@ -1,0 +1,120 @@
+package br.com.locacao.interfaces;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+public class Login extends JFrame {
+	ImageIcon imagem = new ImageIcon(getClass().getResource("/imagens/icon3.png"));
+	
+	private JLabel lblImagem;
+	private JLabel titulo;
+	private JTextField line;
+	private JLabel usuariotxt;
+	private JTextField usuario;
+	private JLabel senhatxt;
+	private JTextField senha;
+	private JButton logar;
+	private JButton cadastrar;
+	
+	public Login() {
+		setLayout(null);
+		inicializarComponentes();
+		eventos();
+	}
+
+	public void inicializarComponentes() {
+		
+		titulo = new JLabel("LOGIN");
+		line = new JTextField ();
+		usuariotxt = new JLabel("USUARIO :");
+		usuario = new JTextField ();
+		senhatxt = new JLabel("SENHA :");
+		senha = new JTextField ();
+		logar = new JButton("LOGIN");
+		cadastrar = new JButton("LIMPAR");
+		
+		titulo.setFont(new Font("Arial", 4, 30));
+		titulo.setForeground(new Color(16,78,139)); 
+		
+		line.setBorder(new LineBorder(new Color(70,130,180)));
+		
+		usuariotxt.setFont(new Font("Arial", Font.PLAIN, 18));
+		usuariotxt.setForeground(new Color(16,78,139)); 
+		usuario.setBorder(new LineBorder(new Color(70,130,180)));
+		
+		senhatxt.setFont(new Font("Arial", Font.PLAIN, 18));
+		senhatxt.setForeground(new Color(16,78,139)); 
+		senha.setBorder(new LineBorder(new Color(70,130,180)));
+		lblImagem = new JLabel(imagem);
+		
+		logar.setFont(new Font("Arial", 5, 16));
+	    logar.setForeground(new Color(70, 130, 180));
+	    logar.setText(" ENTRAR ");
+	    logar.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(211,211,211), 1));
+	    logar.setRequestFocusEnabled(false);
+	    logar.setRolloverEnabled(false);
+	    logar.setMargin(new Insets(2, 100, 2, 14));
+	    
+	    cadastrar.setFont(new Font("Arial", 5, 16));
+	   cadastrar.setForeground(new Color(70, 130, 180));
+	    cadastrar.setText(" CADASTRAR ");
+	    cadastrar.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(211,211,211), 1));
+	    cadastrar.setRequestFocusEnabled(false);
+	    cadastrar.setRolloverEnabled(false);
+	    cadastrar.setMargin(new Insets(2, 100, 2, 14));
+	    
+	    
+	    Painel pnl = new Painel();
+
+	    pnl.setBounds(1,1,1,1);
+		titulo.setBounds(400, 1, 115, 115);
+		line.setBounds(300,90, 280, 1);
+		usuariotxt.setBounds(300, 60, 115, 115);
+		usuario.setBounds(300, 140, 280, 30);
+		senhatxt.setBounds(300, 150, 115, 115);
+		senha.setBounds(300,230, 280, 30);
+		lblImagem.setBounds(15, 60, 250, 250);
+		logar.setBounds(300,300, 120, 40);
+		cadastrar.setBounds(460,300, 120, 40);
+
+		add(titulo);
+		add(line);
+		add(usuariotxt);
+		add(usuario);
+		add(senhatxt);
+		add(senha);
+		add(lblImagem);
+		add(logar);
+		add(cadastrar);
+		add(pnl);
+		
+
+		
+	}
+	
+	public void eventos(){
+		cadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cadastro cd = new Cadastro();
+				cd.setVisible(true);
+				cd.setSize(700,500);
+				cd.getContentPane().setBackground(Color.WHITE);
+				cd.setResizable(false);
+				cd.setLocationRelativeTo(null);
+				
+			}
+		});
+	}
+	
+	
+	
+}

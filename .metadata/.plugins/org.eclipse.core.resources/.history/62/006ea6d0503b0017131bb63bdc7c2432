@@ -1,0 +1,14 @@
+package br.com.locacao.interfaces;
+
+import java.awt.Color;
+
+public class Executavel {
+	public static void main (String [] args){
+		Painel tela = new Painel();
+		tela.setVisible(true);
+		tela.setSize(700,500);
+		tela.getContentPane().setBackground(Color.WHITE);
+		tela.setResizable(false);
+		tela.setLocationRelativeTo(null);
+	}
+}
